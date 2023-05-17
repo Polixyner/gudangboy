@@ -35,7 +35,7 @@
                             <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Barang</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Tambah</a>
+                            <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Tambah & Edit</a>
                         </li>
                         </ul>
                     </div>
@@ -50,19 +50,27 @@
                                         <th>ID</th>
                                         <th>Barang</th>
                                         <th>Stok</th>
+                                        <th>Aksi</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Sabun Mandi</td>
-                                        <td>9</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>Shampo</td>
-                                        <td>99</td>
-                                    </tr>
+                                        <?php
+                                        include_once('db/koneksi.php');
+                                        $query="SELECT * FROM tblbarang";
+                                        $result=$mysqli->query($query);
+                                        if ($result->num_rows > 0) {
+                                            while ($data=$result->fetch_assoc()) {
+                                        ?>
+                                        <tr>
+                                            <td><?= $data['idBarang'] ?></td>
+                                            <td><?= $data['namaBarang'] ?></td>
+                                            <td><?= $data['stokBarang'] ?></td>
+                                            <td>
+                                                <button id="btnEdit" class="btn btn-sm btn-primary" onclick="editBarang('<?=$data['idBarang']?>','<?=$data['namaBarang']?>')">Edit</button>
+                                                <a href="db/funcBarang.php?id=<?=$data['idBarang']?>&proses=hapus" class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                        <?php }} ?>
                                     </tfoot>
                                     </table>
                                 </div>
@@ -74,25 +82,22 @@
                             <!-- general form elements -->
                             <div class="card card-primary">
                                 <div class="card-header">
-                                    <h3 class="card-title">Tambah Barang</h3>
+                                    <h3 class="card-title">Tambah & Edit Barang</h3>
                                 </div>
                                 <!-- /.card-header -->
                                 <!-- form start -->
-                                <form>
+                                <form action="db/funcBarang.php" method="post">
                                     <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Barang</label>
-                                        <input type="text" class="form-control" id="" placeholder="Masukkan Nama Barang">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Stok</label>
-                                        <input type="number" class="form-control" id="" placeholder="Masukkan Jumlah Stok">
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Barang</label>
+                                            <input type="hidden" name="id" id="idBarang">
+                                            <input type="text" class="form-control" id="namaBarang" name="nama" placeholder="Masukkan Nama Barang">
+                                        </div>
                                     </div>
                                     <!-- /.card-body -->
 
                                     <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <input type="submit" name="proses" id="proses" value="Tambah" class="btn btn-primary">
                                     </div>
                                 </form>
                             </div>
