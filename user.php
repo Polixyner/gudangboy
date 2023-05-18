@@ -1,5 +1,3 @@
-<?php include('sidebar.php'); ?>
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,6 +23,12 @@
         <!-- ./row -->
         <div class="row p-4">
             <div class="col-12 col-sm-12 ">
+                <?php if (isset($_SESSION['flash_message'])) : ?>
+                    <div id="myalert" class="alert alert-success" role="alert">
+                        <?= $_SESSION['flash_message'] ?>
+                        <?php unset($_SESSION['flash_message']); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="card card-primary card-tabs card-outline">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -55,7 +59,11 @@
                                                 <?php
                                                 include_once('db/koneksi.php');
                                                 $no = 1;
-                                                $query = "SELECT * FROM tbluser";
+                                                if ($_SESSION["role"] === "Manager") {
+                                                    $query = "SELECT * FROM tbluser WHERE roleUser='Staff'";
+                                                } elseif ($_SESSION["role"] === "Owner") {
+                                                    $query = "SELECT * FROM tbluser WHERE roleUser!='Owner'";
+                                                }
                                                 $result = $mysqli->query($query);
                                                 if ($result->num_rows > 0) {
                                                     while ($data = $result->fetch_assoc()) {
@@ -68,7 +76,7 @@
                                                             <?php if ($data['roleUser'] != "Owner") { ?>
                                                                 <td>
                                                                     <button id="btnEdit" class="btn btn-sm btn-primary" onclick="editUser('<?= $data['idUser'] ?>','<?= $data['namaUser'] ?>','<?= $data['emailUser'] ?>','<?= $data['roleUser'] ?>')">Edit</button>
-                                                                    <a href="db/funcUser.php?id=<?= $data['idUser'] ?>&proses=hapus" class="btn btn-sm btn-danger">Delete</a>
+                                                                    <a href="db/funcUser.php?id=<?= $data['idUser'] ?>&proses=hapus" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ?');">Delete</a>
                                                                 </td>
                                                             <?php } ?>
                                                         </tr>
@@ -85,7 +93,7 @@
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
-                                        <h3 class="card-title">Tambah & Edit Barang</h3>
+                                        <h3 class="card-title">Tambah & Edit User</h3>
                                     </div>
                                     <!-- /.card-header -->
                                     <!-- form start -->
@@ -108,8 +116,12 @@
                                                 <label>Role</label>
                                                 <select class="custom-select rounded-0" name="role" id="role" required>
                                                     <option selected disabled value>Pilih Role</option>
-                                                    <option value="Manager">Manager</option>
-                                                    <option value="Staff">Staff</option>
+                                                    <?php if ($_SESSION["role"] === "Owner") : ?>
+                                                        <option value="Manager">Manager</option>
+                                                        <option value="Staff">Staff</option>
+                                                    <?php elseif ($_SESSION["role"] === "Manager") : ?>
+                                                        <option value="Staff">Staff</option>
+                                                    <?php endif ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -133,6 +145,3 @@
 </div>
 <!-- /.row (main row) -->
 </div>
-
-
-<?php include('footer.php'); ?>

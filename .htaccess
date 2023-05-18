@@ -1,0 +1,12 @@
+RewriteEngine On
+DirectoryIndex dashboard.php
+
+RewriteRule ^dashboard.php$ index.php?page=dashboard [L]
+RewriteRule ^barang.php$ index.php?page=barang [L]
+RewriteRule ^transaksi.php$ index.php?page=transaksi [L]
+RewriteRule ^laporan.php$ index.php?page=laporan [L]
+RewriteRule ^user.php$ index.php?page=user [L]
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On RewriteRule ^/?([A-Za-z]+)/?$ salah.php?id=$1 [L]
+</IfModule>

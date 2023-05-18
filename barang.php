@@ -1,5 +1,3 @@
-<?php include('sidebar.php'); ?>
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -25,6 +23,12 @@
         <!-- ./row -->
         <div class="row p-4">
             <div class="col-12 col-sm-12 ">
+                <?php if (isset($_SESSION['flash_message'])) : ?>
+                    <div id="myalert" class="alert alert-success" role="alert">
+                        <?= $_SESSION['flash_message'] ?>
+                        <?php unset($_SESSION['flash_message']); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="card card-primary card-tabs card-outline">
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -65,7 +69,7 @@
                                                             <td><?= $data['stokBarang'] ?></td>
                                                             <td>
                                                                 <button id="btnEdit" class="btn btn-sm btn-primary" onclick="editBarang('<?= $data['idBarang'] ?>','<?= $data['namaBarang'] ?>')">Edit</button>
-                                                                <a href="db/funcBarang.php?id=<?= $data['idBarang'] ?>&proses=hapus" class="btn btn-sm btn-danger">Delete</a>
+                                                                <a href="db/funcBarang.php?id=<?= $data['idBarang'] ?>&proses=hapus" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data ?');">Delete</a>
                                                             </td>
                                                         </tr>
                                                 <?php }
@@ -114,6 +118,3 @@
 </div>
 <!-- /.row (main row) -->
 </div>
-
-
-<?php include('footer.php'); ?>

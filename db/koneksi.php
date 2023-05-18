@@ -9,5 +9,3 @@ if ($mysqli -> connect_errno) {
     echo('Failed to connect mysqli'.$mysqli->connect_error);
     exit();
 }
-
-?>

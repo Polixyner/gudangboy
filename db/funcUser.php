@@ -1,11 +1,15 @@
 <?php
+session_start();
 if ((isset($_POST['proses']) and $_POST['proses'] == 'Tambah')) {
     add();
 } elseif (isset($_GET['proses']) and $_GET['proses'] == 'hapus') {
     delete();
-} else {
+} elseif (isset($_POST['proses']) and $_POST['proses'] == 'Update') {
     edit();
+} else {
+    echo '<script>window.location.href = "../index.php";</script>';
 }
+
 
 function add()
 {
@@ -19,6 +23,7 @@ function add()
 
     $exec = mysqli_query($mysqli, "INSERT INTO tbluser VALUES ('','$nama','$email','$passwordHash','$role')");
     if ($exec) {
+        $_SESSION['flash_message'] = "Berhasil Menambah Data User";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
@@ -29,6 +34,7 @@ function delete()
     $id = $_GET['id'];
     $exec = $mysqli->query("DELETE FROM tbluser WHERE idUser='$id'");
     if ($exec) {
+        $_SESSION['flash_message'] = "Berhasil Menghapus Data User";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
 }
@@ -50,8 +56,8 @@ function edit()
         $exec = mysqli_query($mysqli, "UPDATE tbluser SET namaUser='$nama', emailUser='$email', passwordUser='$passwordHash' , roleUser='$role' WHERE idUser='$id'");
     }
 
-
     if ($exec) {
         header('Location: ' . $_SERVER['HTTP_REFERER']);
+        $_SESSION['flash_message'] = "Berhasil Mengupdate Data User";
     }
 }

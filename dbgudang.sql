@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 05:43 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: May 18, 2023 at 05:35 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `tblbarang` (
   `idBarang` int(255) NOT NULL,
   `namaBarang` varchar(255) NOT NULL,
-  `stokBarang` int(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `stokBarang` int(255) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -44,8 +44,8 @@ CREATE TABLE `tbltransaksi` (
   `idBarang` int(255) NOT NULL,
   `statusTransaksi` int(2) NOT NULL,
   `tanggalTransaksi` date NOT NULL,
-  `stokTransaksi` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `stokTransaksi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -59,7 +59,16 @@ CREATE TABLE `tbluser` (
   `emailUser` varchar(255) NOT NULL,
   `passwordUser` varchar(255) NOT NULL,
   `roleUser` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbluser`
+--
+
+INSERT INTO `tbluser` (`idUser`, `namaUser`, `emailUser`, `passwordUser`, `roleUser`) VALUES
+(2, 'Admin', 'admin@gmail.com', '$2y$10$wTJqq.LbojoRSdbZkhlB8eVObsncuofyvAtxzEvXXSl.N8YUv81RC', 'Owner'),
+(4, 'Okky Firmansyah', 'okky@gmail.com', '$2y$10$gMQR.XhVzOrnDM0ggQn0de8zqBHIURmPmO0L1Vf13h8uug6M1/HsW', 'Manager'),
+(5, 'Bowo', 'bowo@gmail.com', '$2y$10$YN0Q1gPemw57R4JYqVZYuuVJuQuW8ndo.5VNNopCuPOuux8DeQKtW', 'Staff');
 
 --
 -- Indexes for dumped tables
@@ -75,7 +84,8 @@ ALTER TABLE `tblbarang`
 -- Indexes for table `tbltransaksi`
 --
 ALTER TABLE `tbltransaksi`
-  ADD PRIMARY KEY (`idTransaksi`);
+  ADD PRIMARY KEY (`idTransaksi`),
+  ADD KEY `fk1` (`idBarang`);
 
 --
 -- Indexes for table `tbluser`
@@ -91,7 +101,7 @@ ALTER TABLE `tbluser`
 -- AUTO_INCREMENT for table `tblbarang`
 --
 ALTER TABLE `tblbarang`
-  MODIFY `idBarang` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `idBarang` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `tbltransaksi`
@@ -103,7 +113,17 @@ ALTER TABLE `tbltransaksi`
 -- AUTO_INCREMENT for table `tbluser`
 --
 ALTER TABLE `tbluser`
-  MODIFY `idUser` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `idUser` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbltransaksi`
+--
+ALTER TABLE `tbltransaksi`
+  ADD CONSTRAINT `fk1` FOREIGN KEY (`idBarang`) REFERENCES `tblbarang` (`idBarang`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
