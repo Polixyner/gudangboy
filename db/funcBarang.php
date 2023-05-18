@@ -14,7 +14,7 @@ function add()
 {
     include_once('koneksi.php');
     $nama = $_POST['nama'];
-    $exec = mysqli_query($mysqli, "INSERT INTO tblbarang VALUES ('','$nama','')");
+    $exec = mysqli_query($mysqli, "INSERT INTO tblbarang (namaBarang) VALUES ('$nama')");
     if ($exec) {
         $_SESSION['flash_message'] = "Berhasil Menambah Data Barang";
         header('Location: ' . $_SERVER['HTTP_REFERER']);

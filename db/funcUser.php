@@ -20,8 +20,8 @@ function add()
     $role = $_POST['role'];
 
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
-
-    $exec = mysqli_query($mysqli, "INSERT INTO tbluser VALUES ('','$nama','$email','$passwordHash','$role')");
+    
+    $exec = mysqli_query($mysqli, "INSERT INTO tbluser (namaUser, emailUser, passwordUser, roleUser) VALUES ('$nama','$email','$passwordHash','$role')");
     if ($exec) {
         $_SESSION['flash_message'] = "Berhasil Menambah Data User";
         header('Location: ' . $_SERVER['HTTP_REFERER']);
