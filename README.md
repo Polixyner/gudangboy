@@ -58,8 +58,4 @@ Untuk menjalankan aplikasi GudangBoy, ikuti langkah-langkah berikut:
 
 #
 
-#
-
-#
-
 > # "Gapapa Masuk Neraka, Yang Penting Hasil Usaha Sendiri."
