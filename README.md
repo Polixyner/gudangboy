@@ -54,4 +54,12 @@ Untuk menjalankan aplikasi GudangBoy, ikuti langkah-langkah berikut:
 
 - Konfigurasi koneksi database dengan mengubah file
 
+#
+
+#
+
+#
+
+#
+
 > # "Gapapa Masuk Neraka, Yang Penting Hasil Usaha Sendiri."
