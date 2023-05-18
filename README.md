@@ -37,3 +37,21 @@ Menampilkan ringkasan statistik tentang gudang, seperti jumlah barang, total tra
 - Hapus User: Admin atau pengguna dengan akses tertentu dapat menghapus pengguna yang tidak diperlukan lagi dari sistem.
 
 - Edit User: Admin atau pengguna dengan akses tertentu dapat mengedit informasi pengguna yang ada, seperti mengubah nama, email, kata sandi atau role.
+
+### Instalasi dan Konfigurasi
+
+Untuk menjalankan aplikasi GudangBoy, ikuti langkah-langkah berikut:
+
+- Pastikan Anda memiliki lingkungan pengembangan PHP yang sesuai, seperti XAMPP atau WAMP, yang menyediakan server Apache dan MySQL.
+
+- Unduh repositori GudangBoy dari [Sini](https://github.com/Polixyner/gudangboy) dan ekstrak file tersebut.
+
+- Buka folder proyek GudangBoy dan salin seluruh kontennya ke direktori web server (misalnya, htdocs di XAMPP).
+
+- Buatlah database baru di MySQL dengan nama "dbgudang".
+
+- Import file SQL yang disediakan ("dbgudang.sql") ke dalam database yang baru dibuat menggunakan alat seperti phpMyAdmin atau melalui terminal.
+
+- Konfigurasi koneksi database dengan mengubah file
+
+> "Gapapa Masuk Neraka, Yang Penting Hasil Usaha Sendiri."
