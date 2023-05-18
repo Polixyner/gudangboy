@@ -21,53 +21,73 @@
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
-$(function() {
-    $("#example1").DataTable({
-        "responsive": true,
-        "lengthChange": false,
-        "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
-    // Clear tambah barang
-    $('#custom-tabs-one-profile-tab').on("click", function() {
-        $('#idBarang').val("");
-        $('#namaBarang').val("");
-        $('#proses').val("Tambah");
-    });
-});
-
-// Edit Barang
-function editBarang(id, nama) {
-    console.log(id);
-    console.log(nama);
-    $('[href="#custom-tabs-one-profile"]').tab('show');
-    $('#idBarang').val(id);
-    $('#namaBarang').val(nama);
-    $('#proses').val("Update");
-}
-
-$(document).ready(function() {
-
-    $('#barangid').change(function() {
-        var idBarang = $(this).val();
-
-        $.ajax({
-            type: 'POST',
-            url: 'db/ajax.php',
-            data: 'idBarang=' + idBarang,
-            success: function(response) {
-                $('#stok').html(response);
-            }
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+        // Clear tambah barang
+        $('#custom-tabs-one-profile-tab').on("click", function() {
+            $('#idBarang').val("");
+            $('#namaBarang').val("");
+            $('#proses').val("Tambah");
         });
     });
-});
+
+    // Edit Barang
+    function editBarang(id, nama) {
+        $('[href="#custom-tabs-one-profile"]').tab('show');
+        $('#idBarang').val(id);
+        $('#namaBarang').val(nama);
+        $('#proses').val("Update");
+    }
+
+    // Edit User
+    function editUser(id, nama, email, role) {
+        $('[href="#custom-tabs-one-profile"]').tab('show');
+        $('#password').removeAttr('required')
+        $('#idUser').val(id);
+        $('#nama').val(nama);
+        $('#email').val(email);
+        $('#role').val(role);
+        $('#proses').val("Update");
+    }
+
+    // Get Max Stok
+    $(document).ready(function() {
+        $('#barangid').change(function() {
+            var idBarang = $(this).val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'db/getStok.php',
+                data: 'idBarang=' + idBarang,
+                success: function(response) {
+                    $('#stok').html(response);
+                }
+            });
+        });
+
+        // Clear tambah user
+        $('#custom-tabs-one-profile-tab').on("click", function() {
+            document.getElementById("password").required = true;
+            $('#idUser').val("");
+            $('#nama').val("");
+            $('#email').val("");
+            $('#password').val("");
+            $('#role').val("");
+            $('#proses').val("Tambah");
+        });
+    });
 </script>

@@ -1,4 +1,4 @@
-<?php include('sidebar.php');?>
+<?php include('sidebar.php'); ?>
 
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -10,10 +10,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Dasboard</a></li>
-                        <li class="breadcrumb-item active">Barang</li>
-                    </ol>
+
                 </div>
                 <!-- /.col -->
             </div>
@@ -32,21 +29,16 @@
                     <div class="card-header p-0 pt-1">
                         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill"
-                                    href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home"
-                                    aria-selected="true">Barang</a>
+                                <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Barang</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill"
-                                    href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile"
-                                    aria-selected="false">Tambah & Edit</a>
+                                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Tambah & Edit</a>
                             </li>
                         </ul>
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="custom-tabs-one-tabContent">
-                            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-home-tab">
+                            <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
                                 <div class="card">
                                     <div class="card-body">
                                         <table id="example1" class="table table-bordered table-striped">
@@ -60,24 +52,24 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-                                        include_once('db/koneksi.php');
-                                        $query="SELECT * FROM tblbarang";
-                                        $result=$mysqli->query($query);
-                                        if ($result->num_rows > 0) {
-                                            while ($data=$result->fetch_assoc()) {
-                                        ?>
-                                                <tr>
-                                                    <td><?= $data['idBarang'] ?></td>
-                                                    <td><?= $data['namaBarang'] ?></td>
-                                                    <td><?= $data['stokBarang'] ?></td>
-                                                    <td>
-                                                        <button id="btnEdit" class="btn btn-sm btn-primary"
-                                                            onclick="editBarang('<?=$data['idBarang']?>','<?=$data['namaBarang']?>')">Edit</button>
-                                                        <a href="db/funcBarang.php?id=<?=$data['idBarang']?>&proses=hapus"
-                                                            class="btn btn-sm btn-danger">Delete</a>
-                                                    </td>
-                                                </tr>
-                                                <?php }} ?>
+                                                include_once('db/koneksi.php');
+                                                $no = 1;
+                                                $query = "SELECT * FROM tblbarang";
+                                                $result = $mysqli->query($query);
+                                                if ($result->num_rows > 0) {
+                                                    while ($data = $result->fetch_assoc()) {
+                                                ?>
+                                                        <tr>
+                                                            <td><?= $no++ ?></td>
+                                                            <td><?= $data['namaBarang'] ?></td>
+                                                            <td><?= $data['stokBarang'] ?></td>
+                                                            <td>
+                                                                <button id="btnEdit" class="btn btn-sm btn-primary" onclick="editBarang('<?= $data['idBarang'] ?>','<?= $data['namaBarang'] ?>')">Edit</button>
+                                                                <a href="db/funcBarang.php?id=<?= $data['idBarang'] ?>&proses=hapus" class="btn btn-sm btn-danger">Delete</a>
+                                                            </td>
+                                                        </tr>
+                                                <?php }
+                                                } ?>
                                                 </tfoot>
                                         </table>
                                     </div>
@@ -85,8 +77,7 @@
                                 </div>
                                 <!-- /.card -->
                             </div>
-                            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel"
-                                aria-labelledby="custom-tabs-one-profile-tab">
+                            <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
                                 <!-- general form elements -->
                                 <div class="card card-primary">
                                     <div class="card-header">
@@ -99,15 +90,13 @@
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Barang</label>
                                                 <input type="hidden" name="id" id="idBarang">
-                                                <input type="text" class="form-control" id="namaBarang" name="nama"
-                                                    placeholder="Masukkan Nama Barang">
+                                                <input type="text" class="form-control" id="namaBarang" name="nama" placeholder="Masukkan Nama Barang">
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
 
                                         <div class="card-footer">
-                                            <input type="submit" name="proses" id="proses" value="Tambah"
-                                                class="btn btn-primary">
+                                            <input type="submit" name="proses" id="proses" value="Tambah" class="btn btn-primary">
                                         </div>
                                     </form>
                                 </div>
@@ -127,4 +116,4 @@
 </div>
 
 
-<?php include('footer.php');?>
+<?php include('footer.php'); ?>
