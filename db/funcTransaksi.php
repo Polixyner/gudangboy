@@ -18,8 +18,9 @@ function transaksiMasuk()
     $tanggal = $_POST['tanggal'];
     $barang = $_POST['barang'];
     $stok = $_POST['stok'];
+    $idUser = $_SESSION["iduser"];
 
-    $eksekusi = mysqli_query($mysqli, "INSERT INTO tbltransaksi (idBarang,statusTransaksi,tanggalTransaksi,stokTransaksi) VALUES ('$barang', '1', '$tanggal', '$stok')");
+    $eksekusi = mysqli_query($mysqli, "INSERT INTO tbltransaksi (idBarang,idUser,statusTransaksi,tanggalTransaksi,stokTransaksi) VALUES ('$barang', '$idUser' , '1', '$tanggal', '$stok')");
 
     if ($eksekusi) {
 
@@ -48,8 +49,9 @@ function transaksiKeluar()
     $tanggal = $_POST['tanggal'];
     $barang = $_POST['barang'];
     $stok = $_POST['stok'];
+    $idUser = $_SESSION["iduser"];
 
-    $eksekusi = mysqli_query($mysqli, "INSERT INTO tbltransaksi (idBarang,statusTransaksi,tanggalTransaksi,stokTransaksi) VALUES ('$barang', '0', '$tanggal', '$stok')");
+    $eksekusi = mysqli_query($mysqli, "INSERT INTO tbltransaksi (idBarang,idUser,statusTransaksi,tanggalTransaksi,stokTransaksi) VALUES ('$barang', '$idUser', '0', '$tanggal', '$stok')");
 
     if ($eksekusi) {
 

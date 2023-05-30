@@ -20,7 +20,8 @@ $segment2 = isset($segments[1]) ? $segments[1] : '';
     <title>Gudang Boy</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -81,7 +82,8 @@ $segment2 = isset($segments[1]) ? $segments[1] : '';
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index.php" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">AdminLTE 3</span>
             </a>
 
@@ -99,13 +101,15 @@ $segment2 = isset($segments[1]) ? $segments[1] : '';
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="index.php" class="nav-link <?php if ($segment2 === 'index.php' || $segment2 === 'dashboard.php') : ?>active<?php endif ?>">
+                                    <a href="index.php"
+                                        class="nav-link <?php if ($segment2 === 'index.php' || $segment2 === 'dashboard.php') : ?>active<?php endif ?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Dashboard
@@ -113,56 +117,62 @@ $segment2 = isset($segments[1]) ? $segments[1] : '';
                                     </a>
                                 </li>
                                 <?php if ($_SESSION["role"] === "Owner") : ?>
-                                    <li class="nav-item">
-                                        <a href="laporan.php" class="nav-link <?php if ($segment2 === 'laporan.php') : ?>active<?php endif ?>">
-                                            <i class="nav-icon fas fa-chart-bar"></i>
-                                            <p>
-                                                Laporan Transaksi
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="user.php" class="nav-link <?php if ($segment2 === 'user.php') : ?>active<?php endif ?>">
-                                            <i class="nav-icon fas fa-users"></i>
-                                            <p>
-                                                User
-                                            </p>
-                                        </a>
-                                    </li>
+                                <li class="nav-item">
+                                    <a href="laporan.php"
+                                        class="nav-link <?php if ($segment2 === 'laporan.php') : ?>active<?php endif ?>">
+                                        <i class="nav-icon fas fa-chart-bar"></i>
+                                        <p>
+                                            Laporan Transaksi
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="user.php"
+                                        class="nav-link <?php if ($segment2 === 'user.php') : ?>active<?php endif ?>">
+                                        <i class="nav-icon fas fa-users"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
                                 <?php elseif ($_SESSION["role"] === "Manager") : ?>
-                                    <li class="nav-item">
-                                        <a href="laporan.php" class="nav-link <?php if ($segment2 === 'laporan.php') : ?>active<?php endif ?>">
-                                            <i class="nav-icon fas fa-chart-bar"></i>
-                                            <p>
-                                                Laporan Transaksi
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="user.php" class="nav-link <?php if ($segment2 === 'user.php') : ?>active<?php endif ?>">
-                                            <i class="nav-icon fas fa-users"></i>
-                                            <p>
-                                                User
-                                            </p>
-                                        </a>
-                                    </li>
+                                <li class="nav-item">
+                                    <a href="laporan.php"
+                                        class="nav-link <?php if ($segment2 === 'laporan.php') : ?>active<?php endif ?>">
+                                        <i class="nav-icon fas fa-chart-bar"></i>
+                                        <p>
+                                            Laporan Transaksi
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="user.php"
+                                        class="nav-link <?php if ($segment2 === 'user.php') : ?>active<?php endif ?>">
+                                        <i class="nav-icon fas fa-users"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
                                 <?php elseif ($_SESSION["role"] === "Staff") : ?>
-                                    <li class="nav-item">
-                                        <a href="barang.php" class="nav-link <?php if ($segment2 === 'barang.php') : ?>active<?php endif ?>">
-                                            <i class="nav-icon fas fa-boxes"></i>
-                                            <p>
-                                                Barang
-                                            </p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="transaksi.php" class="nav-link <?php if ($segment2 === 'transaksi.php') : ?>active<?php endif ?>">
-                                            <i class="nav-icon fas fa-exchange-alt"></i>
-                                            <p>
-                                                Transaksi
-                                            </p>
-                                        </a>
-                                    </li>
+                                <li class="nav-item">
+                                    <a href="barang.php"
+                                        class="nav-link <?php if ($segment2 === 'barang.php') : ?>active<?php endif ?>">
+                                        <i class="nav-icon fas fa-boxes"></i>
+                                        <p>
+                                            Barang
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="transaksi.php"
+                                        class="nav-link <?php if ($segment2 === 'transaksi.php') : ?>active<?php endif ?>">
+                                        <i class="nav-icon fas fa-exchange-alt"></i>
+                                        <p>
+                                            Transaksi
+                                        </p>
+                                    </a>
+                                </li>
                                 <?php endif ?>
                         </li>
                     </ul>
@@ -204,7 +214,7 @@ $segment2 = isset($segments[1]) ? $segments[1] : '';
     <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-        $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -228,6 +238,7 @@ $segment2 = isset($segments[1]) ? $segments[1] : '';
     <script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.js"></script>
+    <script src="dist/js/custom.js"></script>
 
     <!-- DataTables  & Plugins -->
     <script src="plugins/datatables/jquery.dataTables.min.js"></script>
@@ -243,81 +254,83 @@ $segment2 = isset($segments[1]) ? $segments[1] : '';
     <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
     <script>
-        var alert = document.getElementById('myalert');
-        setTimeout(function() {
+    var alert = document.getElementById('myalert');
+    setTimeout(function() {
+        if (alert !== null) {
             alert.style.display = 'none';
-        }, 2000);
+        }
+    }, 2000);
     </script>
     <script>
-        $(function() {
-            $("#example1").DataTable({
-                "responsive": true,
-                "lengthChange": false,
-                "autoWidth": false,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
-            });
-            // Clear tambah barang
-            $('#custom-tabs-one-profile-tab').on("click", function() {
-                $('#idBarang').val("");
-                $('#namaBarang').val("");
-                $('#proses').val("Tambah");
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+        // Clear tambah barang
+        $('#custom-tabs-one-profile-tab').on("click", function() {
+            $('#idBarang').val("");
+            $('#namaBarang').val("");
+            $('#proses').val("Tambah");
+        });
+    });
+
+    // Edit Barang
+    function editBarang(id, nama) {
+        $('[href="#custom-tabs-one-profile"]').tab('show');
+        $('#idBarang').val(id);
+        $('#namaBarang').val(nama);
+        $('#proses').val("Update");
+    }
+
+    // Edit User
+    function editUser(id, nama, email, role) {
+        $('[href="#custom-tabs-one-profile"]').tab('show');
+        $('#password').removeAttr('required')
+        $('#idUser').val(id);
+        $('#nama').val(nama);
+        $('#email').val(email);
+        $('#role').val(role);
+        $('#proses').val("Update");
+    }
+
+    // Get Max Stok
+    $(document).ready(function() {
+        $('#barangid').change(function() {
+            var idBarang = $(this).val();
+
+            $.ajax({
+                type: 'POST',
+                url: 'db/getStok.php',
+                data: 'idBarang=' + idBarang,
+                success: function(response) {
+                    $('#stok').html(response);
+                }
             });
         });
 
-        // Edit Barang
-        function editBarang(id, nama) {
-            $('[href="#custom-tabs-one-profile"]').tab('show');
-            $('#idBarang').val(id);
-            $('#namaBarang').val(nama);
-            $('#proses').val("Update");
-        }
-
-        // Edit User
-        function editUser(id, nama, email, role) {
-            $('[href="#custom-tabs-one-profile"]').tab('show');
-            $('#password').removeAttr('required')
-            $('#idUser').val(id);
-            $('#nama').val(nama);
-            $('#email').val(email);
-            $('#role').val(role);
-            $('#proses').val("Update");
-        }
-
-        // Get Max Stok
-        $(document).ready(function() {
-            $('#barangid').change(function() {
-                var idBarang = $(this).val();
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'db/getStok.php',
-                    data: 'idBarang=' + idBarang,
-                    success: function(response) {
-                        $('#stok').html(response);
-                    }
-                });
-            });
-
-            // Clear tambah user
-            $('#custom-tabs-one-profile-tab').on("click", function() {
-                document.getElementById("password").required = true;
-                $('#idUser').val("");
-                $('#nama').val("");
-                $('#email').val("");
-                $('#password').val("");
-                $('#role').val("");
-                $('#proses').val("Tambah");
-            });
+        // Clear tambah user
+        $('#custom-tabs-one-profile-tab').on("click", function() {
+            document.getElementById("password").required = true;
+            $('#idUser').val("");
+            $('#nama').val("");
+            $('#email').val("");
+            $('#password').val("");
+            $('#role').val("");
+            $('#proses').val("Tambah");
         });
+    });
     </script>
 </body>
 
